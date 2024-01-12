@@ -1,0 +1,16 @@
+{
+    "name": "Campus Quest",
+    "short_name": "Campus Quest",
+    "description": "Campus Quest - Découvre ton campus !",
+    "start_url": "/",
+    "scope": "/",
+    "theme_color": "#262335",
+    "background_color": "#262335",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "public/next.svg",
+            "sizes": "any"
+        }
+    ]
+}
