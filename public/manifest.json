@@ -9,7 +9,7 @@
     "display": "standalone",
     "icons": [
         {
-            "src": "public/next.svg",
+            "src": "public/logo-CQ.png",
             "sizes": "any"
         }
     ]
