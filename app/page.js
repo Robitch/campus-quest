@@ -73,7 +73,13 @@ export default function Home(props) {
       <h1>Bonjourz</h1>
       {/* <p>Country : {country}</p> */}
       <p>Location : {location && `Latitude: ${location.latitude}, Longitude: ${location.longitude}`}</p>
-      <p>Near School ? {nearSchool}</p>
+      <p>Near School :
+        {nearSchool ?
+          <span className="text-green-500">Vous êtes à moins de 500 mètres de l'école</span>
+          :
+          <span className="text-red-500">Vous êtes à plus de 500 mètres de l'école</span>
+        }
+      </p>
 
     </main>
   )
