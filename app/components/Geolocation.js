@@ -10,7 +10,7 @@ export default function Home(props) {
     // 49.2009066703143, -0.3500462865054514
     const schoolLatitude = 49.2009066703143;
     const schoolLongitude = -0.3500462865054514;
-    const maxDistance = 0.5;
+    const maxDistance = 1;
 
     useEffect(() => {
         if (!navigator.geolocation) {
@@ -29,11 +29,11 @@ export default function Home(props) {
             console.log(distance);
 
             if (distance <= maxDistance) {
-                console.log('Vous êtes à moins de 500 mètres de l\'école');
+                console.log('Vous êtes à moins de 1 km de l\'école');
                 setNearSchool(true);
             }
             else {
-                console.log('Vous êtes à plus de 500 mètres de l\'école');
+                console.log('Vous êtes à plus de 1 km de l\'école');
                 setNearSchool(false);
             }
 
@@ -67,8 +67,8 @@ export default function Home(props) {
     return (
         <div className={`border rounded-lg px-4 py-3 ${nearSchool ? 'bg-green-100 border-green-500 text-green-700' : 'bg-red-100 border-red-500 text-red-700'}`}>
             <h1 className='block rounded-lg text-base font-semibold leading-7 text-gray-900'>Géocalisation</h1>
-            <p role="alert">Vous êtes à {nearSchool ? 'moins de 500 mètres' : 'plus de 500 mètres'} de l'école</p>
-            <p role="alert">Coordonnées : {location && `Latitude: ${location.latitude}, Longitude: ${location.longitude}`}</p>
+            <p role="alert">Vous êtes à {nearSchool ? 'moins de 1 km' : 'plus de 1 km'} de l'école</p>
+            <p role="alert">{location && `Latitude: ${location.latitude}, Longitude: ${location.longitude}`}</p>
         </div>
     );
 
