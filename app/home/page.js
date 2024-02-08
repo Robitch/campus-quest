@@ -2,11 +2,18 @@
 
 import { useEffect, useState } from 'react';
 import QuestList from '../components/QuestList';
+import CodeReader from '../components/CodeReader';
 import PhotoCapture from '../components/PhotoCapture';
 
 export default function Home() {
     const [quetes, setQuetes] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const [decodedValue, setDecodedValue] = useState("");
+
+    const handleResult = (result) => {
+        setDecodedValue(result);
+    };
 
     const getData = async () => {
         await fetch('/api/get-quests')
@@ -18,8 +25,8 @@ export default function Home() {
             .finally(() => {
                 setLoading(false);
             })
-
     }
+
 
     useEffect(() => {
         getData();
@@ -30,7 +37,10 @@ export default function Home() {
             <h1>Quêtes</h1>
             {loading && <p>Chargement...</p>}
             {!loading && <QuestList quetes={quetes} />}
-            <PhotoCapture />
+            {/* <PhotoCapture /> */}
+            <CodeReader onResult={handleResult} />
+            <p>Decoded Value: {decodedValue}</p>
+
         </main>
     );
 }
