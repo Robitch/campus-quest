@@ -27,6 +27,24 @@ export default function Home() {
             })
     }
 
+    const validQuest = async (qrCodeValue) => {
+        await fetch(`/api/valid-quest?qrCodeValue=${qrCodeValue}`).then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setDecodedValue("");
+                getData();
+            })
+            .catch(err => console.log(err))
+    }
+
+    // valid la quete si il y a un qr code
+    useEffect(() => {
+        if (decodedValue) {
+            console.log('decodedValue', decodedValue)
+            validQuest(decodedValue);
+        }
+    }, [decodedValue])
+
 
     useEffect(() => {
         getData();
