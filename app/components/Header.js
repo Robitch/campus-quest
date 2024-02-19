@@ -36,6 +36,13 @@ export default function Header({ children }) {
                 <div className="flex lg:flex-1">
                     <a href="#" className="-m-1.5 p-1.5">
                         <span className="sr-only">Campus-Quest</span>
+
+                        {/* logo en mobile */}
+                        <img
+                            className="block h-12 w-auto"
+                            src="logo-CQ-removebg-preview.png"
+                            alt=""
+                        />
                     </a>
                 </div>
                 <div className="flex lg:hidden">

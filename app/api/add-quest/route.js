@@ -6,9 +6,11 @@ export async function GET(request) {
     const questName = searchParams.get('questName');
     const questDescription = searchParams.get('questDescription');
 
+    const qrCodeValue = `quest_url_for${questName}`;
+
     try {
         if (!questName || !questDescription) throw new Error('Quest and questDescription names required');
-        await sql`INSERT INTO Quests (Name, Description) VALUES (${questName}, ${questDescription});`;
+        await sql`INSERT INTO Quests (Name, Description, Qr_code) VALUES (${questName}, ${questDescription}, ${qrCodeValue});`;
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 });
     }
