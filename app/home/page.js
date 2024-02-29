@@ -57,7 +57,6 @@ export default function Home() {
             {!loading && <QuestList quetes={quetes} />}
             {/* <PhotoCapture /> */}
             <CodeReader onResult={handleResult} />
-            <p>Decoded Value: {decodedValue}</p>
 
         </main>
     );
