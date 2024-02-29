@@ -8,26 +8,6 @@ import PhotoCapture from '../components/PhotoCapture';
 export default function Home() {
     const [quetes, setQuetes] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [isDesktop, setIsDesktop] = useState(false);
-
-    useEffect(() => {
-        // Vérifie si l'application est ouverte sur un appareil de bureau
-        const isDesktopQuery = window.matchMedia('(min-width: 768px)');
-
-        // Met à jour l'état selon le résultat de la requête
-        setIsDesktop(!isDesktopQuery.matches);
-
-        // Ajoute un écouteur pour détecter les changements de taille de l'écran
-        const handleResize = () => {
-            setIsDesktop(!isDesktopQuery.matches);
-        };
-        isDesktopQuery.addEventListener('change', handleResize);
-
-        // Nettoie l'écouteur lors du démontage du composant
-        return () => {
-            isDesktopQuery.removeEventListener('change', handleResize);
-        };
-    }, []);
 
     const [decodedValue, setDecodedValue] = useState("");
 
@@ -72,18 +52,11 @@ export default function Home() {
 
     return (
         <main>
-            {isDesktop ? (
-                <p>Cette application est optimisée pour les appareils mobiles. Veuillez ouvrir cette page sur un appareil mobile.</p>
-            ) : (
-                // Votre contenu pour les appareils mobiles
-                <div>
-                    <h1>Quêtes</h1>
-                    {loading && <p>Chargement...</p>}
-                    {!loading && <QuestList quetes={quetes} />}
-                    {/* <PhotoCapture /> */}
-                    <CodeReader onResult={handleResult} />
-                </div>
-            )}
+            <h1>Quêtes</h1>
+            {loading && <p>Chargement...</p>}
+            {!loading && <QuestList quetes={quetes} />}
+            {/* <PhotoCapture /> */}
+            <CodeReader onResult={handleResult} />
 
         </main>
     );
